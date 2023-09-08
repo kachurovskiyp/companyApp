@@ -62,14 +62,12 @@ describe('Department Updating data', () => {
     });
 
     it('should properly update one document with "save" method', async () => {
-        it('should properly update one document with "save" method', async () => {
-            const department = await Department.findOne({ name: 'Department #1' });
-            department.name = '=Department #1=';
-            await department.save();
+        const department = await Department.findOne({ name: 'Department #1' });
+        department.name = '=Department #1=';
+        await department.save();
 
-            const updatedDepartment = await Department.findOne({ name: '=Department #1=' });
-            expect(updatedDepartment).to.not.be.null;
-        });
+        const updatedDepartment = await Department.findOne({ name: '=Department #1=' });
+        expect(updatedDepartment).to.not.be.null;
     });
 
     it('should properly update multiple documents with "updateMany" method', async () => {
@@ -87,10 +85,10 @@ describe('Department Removing data', () => {
     beforeEach(async () => {
         const testDepOne = new Department({ name: 'Department #1' });
         await testDepOne.save();
-      
+
         const testDepTwo = new Department({ name: 'Department #2' });
         await testDepTwo.save();
-      });
+    });
 
     it('should properly remove one document with "deleteOne" method', async () => {
         await Department.deleteOne({ name: 'Department #1' });
@@ -104,8 +102,8 @@ describe('Department Removing data', () => {
         expect(departments.length).to.be.equal(0);
     });
 
-      
+
     afterEach(async () => {
         await Department.deleteMany();
-      });
+    });
 });
